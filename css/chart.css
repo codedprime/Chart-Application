@@ -1,0 +1,55 @@
+        body {
+          height: 700px;
+          font-family: Georgia
+        }
+          h1{
+            background-color: #4CAF50;
+            text-align: center;
+            color: white;
+            padding: 16px 32px;
+            text-decoration: none;
+            margin: 0px
+          }
+          div{
+             background-color:rgba(192,192,192,0.5);
+            margin-top: 0px;
+            width: 140px;
+            height: 700px;
+            font-weight: bold
+          }
+          
+          
+          input[type=submit]{
+            
+            width: 80%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px 8px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-right: 5px;
+            margin-left: 10px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            border: 2px solid background-color:rgba(192,192,192,0.4) ;
+            border-radius: 4px;
+            cursor: pointer;
+          }
+          
+          input[type=submit] :hover{
+            background-color: #f4f556
+          }
+
+          canvas{
+              border-bottom :1px solid black;
+              border-left :1px solid black;
+
+          }
+          #myInput{
+            padding-left: 200px;
+
+          }
+          
+          
+          
+      
