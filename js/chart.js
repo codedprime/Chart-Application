@@ -1,14 +1,16 @@
 myLabel = [];
 myData = [];
- var eachData;
+myColor =[];
+ var eachData, eachLabel,eachColor;
  
 
 
 function reload(){
 
-  while((myData.length > 0)||(myLabel.length>0) ){
+  while((myData.length > 0)||(myLabel.length>0)||(myColor.length>0) ){
     myData.pop();
     myLabel.pop();
+    myColor.pop();
 }
   eachData = 0;
   eachLabel = 0;
@@ -25,10 +27,13 @@ function data()
            
             eachData = document.getElementById('data').value;
             eachLabel = document.getElementById('label').value;
+            eachColor = document.getElementById('color').value;
             console.log(eachData);
             parseInt(eachData);
+            //parseInt(eachColor);
             myData.push(eachData);
             myLabel.push(eachLabel);
+            myColor.push(eachColor);
             console.log(myData); 
             console.log(myLabel);    
 }
@@ -108,12 +113,12 @@ function barChart(){
             ctx.beginPath();          
            
            
-           var colors = ["blue", "red", "yellow", "green", "orange",
-           "brown","purple","violet","grey","black"];
+          // var colors = ["blue", "red", "yellow", "green", "orange",
+           //"brown","purple","violet","grey","black"];
            var total = 0;
-           myData = [40,30,100,20,60]
+           //myData = [40,30,100,20,60]
            for (var i in myData){
-             total += myData[i];
+             total +=parseFloat(myData[i]);
            }
           var prevAngle = 0;
            for (var i in myData){
@@ -122,7 +127,7 @@ function barChart(){
              
              var angle = prevAngle + fraction*Math.PI*2;
              console.log(angle);
-             ctx.fillStyle = colors[i];
+             ctx.fillStyle = myColor[i];
              ctx.beginPath();
              //ctx.moveTo(200,200);
              ctx.arc(200,200,150,prevAngle,angle,false);
@@ -138,7 +143,8 @@ function barChart(){
             var y = 200 + (labelRadius) * Math.sin(midAngle);
             ctx.font = '24px serif';
             ctx.fillStyle = 'black';
-            ctx.fillText(myLabel[i] , x, y);
+            ctx.fillText(myLabel[i], x, y);
+            ctx.fillText(myData[i]+ '\xB0 ', x+10, y-20);
              
            
 
