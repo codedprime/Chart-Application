@@ -6,7 +6,7 @@ This application is a web application that draws a pie chart, bar chart, line ch
 
 ## Getting Started
 
-- To use, click here... or download or clone this reposotory and open the index.html file in a browser.
+- To use, click [here] (https://codedprime.github.io/bc-20-Chart-Application/) or download or clone this reposotory and open the index.html file in a browser.
 - Ensure that the browser supports javascript. 
 - For a better output, include a label for each data entry.
 - It is recommended to pick colors that will not conflict black.
@@ -39,7 +39,7 @@ This application is a web application that draws a pie chart, bar chart, line ch
 ## Contributing
 
   1. Fork it: Fork the ultrafly project
-  2. Create your feature branch (git checkout -b my-new-feature)
-  3. Commit your changes (git commit -am 'Add some feature')
-  4. Push to the branch (git push origin my-new-feature)
+  2. Create your feature branch 
+  3. Commit your changes 
+  4. Push to the branch 
   5. Create a new Pull Request
