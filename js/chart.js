@@ -1,21 +1,20 @@
+
 myLabel = [];
 myData = [];
- var eachData;
- 
+myColor =[];
 
-
-function reload(){
-
-  while((myData.length > 0)||(myLabel.length>0) ){
-    myData.pop();
-    myLabel.pop();
-}
-  eachData = 0;
-  eachLabel = 0;
+function reload() {
+    while((myData.length > 0)||(myLabel.length>0)||(myColor.length>0) ){
+        myData.pop();
+        myLabel.pop();
+        myColor.pop();
+    }
+    eachData = 0;
+    eachLabel = 0;
 
    var canvas = document.getElementById('myCanvas');
-            var ctx = canvas.getContext('2d'); ctx.clearRect(0,0,canvas.width,canvas.height);
-             ctx.beginPath();
+   var ctx = canvas.getContext('2d'); ctx.clearRect(0,0,canvas.width,canvas.height);
+   ctx.beginPath();
 }
 
 
@@ -25,150 +24,193 @@ function data()
            
             eachData = document.getElementById('data').value;
             eachLabel = document.getElementById('label').value;
+            eachColor = document.getElementById('color').value;
             console.log(eachData);
             parseInt(eachData);
             myData.push(eachData);
             myLabel.push(eachLabel);
-            console.log(myData); 
-            console.log(myLabel);    
+            myColor.push(eachColor);
+ 
 }
 
-function barChart(){       
-               var canvas = document.getElementById('myCanvas');
-            var ctx = canvas.getContext('2d');     
+function barChart() {       
+    var canvas = document.getElementById('myCanvas');
+    var ctx = canvas.getContext('2d');     
+    var total = 0;
+    var min = myData[0];
+    var max = myData[0]; 
+    var width  = 100;
+    var x = width* 0.4;
+    var x2;
+    
 
-             ctx.clearRect(0,0,canvas.width,canvas.height);
-             ctx.beginPath();
-             
-            
-            var width = 50;
-            var x = 50;            
-            
-           
-            ctx.font = '16px serif';
-            for (var i=0; i < myData.length; i++){
-              var y = myData[i];
-               ctx.fillStyle ='green';
-              ctx.fillRect(x, canvas.height - y, width, y);
-              
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.beginPath();  
 
-             
-            ctx.fillStyle = 'black';
-            ctx.fillText(myData[i], x+10, canvas.height - y);
+    if (myData.length >5) {
+        width = (canvas.width/myData.length)
+        x = width*0.1;
+        width = (canvas.width/myData.length) -x;
+    }     
 
-            x += width + 10;
+    for (var i in myData) {
+        if (myData[i] >= max) {
+            max =parseFloat(myData[i]);
+        }
+    }
 
+    ctx.moveTo(0,0);
+    ctx.lineTo(0,480);
+    ctx.lineTo(600,480);
+    ctx.fillStyle ='black';
+    ctx.stroke();
+    ctx.font = '14px serif';
 
+    if (myData.length>20) {
+        ctx.font = '10px serif';
+    }
 
-            }
-            
-          }
-          function histogram(){
+    if (myData.length>30) {
+        ctx.font = '7px serif';
+    }
+    x2 = x; 
 
-            var canvas = document.getElementById('myCanvas');
-            var ctx = canvas.getContext('2d');     
-        
-            
-            ctx.clearRect(0,0,canvas.width,canvas.height);
-            ctx.beginPath();
-            
-            
-            var width = 50;
-            var x = 50;            
-            
-           
-            ctx.strokeStyle = "black";
-            ctx.stroke();
-            
-            ctx.font = '16px serif';
-            for (var i in myData){
-              var y = myData[i];
-              ctx.fillStyle = "green";
-              ctx.fillRect(x, canvas.height - y, width, y);
-               
-              ctx.strokeRect(x, canvas.height - y, width, y);
+    for (var i=0; i < myData.length; i++) {
+        var y = myData[i];
+        var y2 = (y/max)*450;
+        ctx.fillStyle ='green';               
+        ctx.fillRect(x, 480 - y2, width, y2);        
+        ctx.fillStyle = 'black';
+        ctx.fillText(myData[i], x+x2, 480 - y2);
+        ctx.fillText(myLabel[i], x+x2, 495);
+        x += width + x2;
+    }
+}
+function histogram() {       
+    var canvas = document.getElementById('myCanvas');
+    var ctx = canvas.getContext('2d');     
+    var total = 0;
+    var min = myData[0];
+    var max = myData[0]; 
+    var width  = 100;
+    var x = width* 0.4;
+    var x2;
+    
 
-              ctx.fillStyle = 'black';
-            ctx.fillText(myData[i], x+10, canvas.height - y);
-              
-              x += width;
-            }
-            
-          }
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.beginPath();  
 
-           function pieChart(){
+    if (myData.length >5) {
+        width = (canvas.width/myData.length)
+        x = width*0.1;
+        width = (canvas.width/myData.length) -x;
+    }     
 
-             var canvas = document.getElementById('myCanvas');
-             canvas.border=0;
-              
-            var ctx = canvas.getContext('2d');     
-           
+    for (var i in myData) {
+        if (myData[i] >= max) {
+            max =parseFloat(myData[i]);
+        }
+    }
 
-            ctx.clearRect(0,0,canvas.width,canvas.height);
-            ctx.beginPath();          
-           
-           
-           var colors = ["blue", "red", "yellow", "green", "orange",
-           "brown","purple","violet","grey","black"];
-           var total = 0;
-           myData = [40,30,100,20,60]
-           for (var i in myData){
-             total += myData[i];
-           }
-          var prevAngle = 0;
-           for (var i in myData){
-             var fraction = myData[i]/total;
-             console.log(myData[i]);
-             
-             var angle = prevAngle + fraction*Math.PI*2;
-             console.log(angle);
-             ctx.fillStyle = colors[i];
-             ctx.beginPath();
-             //ctx.moveTo(200,200);
-             ctx.arc(200,200,150,prevAngle,angle,false);
-             ctx.lineTo(200,200);
-             ctx.fill();
-             ctx.strokeStyle = 'black';
-             ctx.stroke();
+    ctx.moveTo(0,0);
+    ctx.lineTo(0,480);
+    ctx.lineTo(600,480);
+    ctx.fillStyle ='black';
+    ctx.stroke();
+    ctx.font = '14px serif';
 
-             var midAngle = prevAngle + (angle - prevAngle) / 2;
-             
-            var labelRadius = 150 * .75;
-            var x = 200 + (labelRadius) * Math.cos(midAngle);
-            var y = 200 + (labelRadius) * Math.sin(midAngle);
-            ctx.font = '24px serif';
-            ctx.fillStyle = 'black';
-            ctx.fillText(myLabel[i] , x, y);
-             
-           
+    if (myData.length>20) {
+        ctx.font = '10px serif';
+    }
+
+    if (myData.length>30) {
+        ctx.font = '7px serif';
+    }
+    x2 = x; 
+
+    for (var i=0; i < myData.length; i++) {
+        var y = myData[i];
+        var y2 = (y/max)*450;
+        ctx.fillStyle ='green';               
+        ctx.fillRect(x, 480 - y2, width, y2);
+        ctx.strokeRect(x, 480 - y2, width, y2);      
+        ctx.fillStyle = 'black';
+        ctx.fillText(myData[i], x+x2, 480 - y2);
+        ctx.fillText(myLabel[i], x+x2, 495);
+        x += width;
+    }
+}
 
 
-             prevAngle = angle;
-           }
-           }  
-           function lineChart(){        
-             var canvas = document.getElementById('myCanvas');
-            var ctx = canvas.getContext('2d');       
+function pieChart(){
+    var canvas = document.getElementById('myCanvas');    
+    var ctx = canvas.getContext('2d');
+    var total = 0;
+    var prevAngle = 0;
+    var fraction, angle, midAngle, x, y, labelRadius;
 
-            ctx.clearRect(0,0,canvas.width,canvas.height);
-            ctx.beginPath();
-            
-            
-            var x = 0;
-            
-            ctx.moveTo(0,canvas.height);
-            ctx.font = '16px serif';
-            for (var i in myData){
-              var y = myData[i];
-              x += 50;
-              ctx.lineTo(x,canvas.height - y);
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.beginPath();         
 
-              ctx.fillStyle = 'black';
-            ctx.fillText(myData[i], x ,canvas.height - y);
-            
-              ctx.stroke();
-            }
-            
-            
-           
-          }
+    
+    for (var i in myData){
+        total +=parseFloat(myData[i]);
+    }
+    
+    for (var i in myData){
+        fraction = myData[i]/total;        
+
+        angle = prevAngle + fraction*Math.PI*2;        
+        ctx.fillStyle = myColor[i];
+        ctx.beginPath();        
+        ctx.arc(200,200,150,prevAngle,angle,false);
+        ctx.lineTo(200,200);
+        ctx.fill();
+        ctx.strokeStyle = 'black';
+        ctx.stroke();
+        midAngle = prevAngle + (angle - prevAngle) / 2;
+        labelRadius = 200 * .75;
+        x = 200 + (labelRadius) * Math.cos(midAngle);
+        y = 200 + (labelRadius) * Math.sin(midAngle);
+        ctx.font = '24px serif';
+        ctx.fillStyle = 'black';
+        ctx.fillText(myLabel[i], x, y);
+        ctx.fillText(Math.floor(fraction*360)+ '\xB0 ', x+10, y-20);        
+        prevAngle = angle;
+    }
+}  
+function lineChart(){        
+    var canvas = document.getElementById('myCanvas');
+    var ctx = canvas.getContext('2d');    
+    var max = myData[0]
+    var y,y2,x2;
+    var x = 0;  
+
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.beginPath(); 
+    ctx.font = '16px serif';
+    ctx.fillStyle ='black';
+    ctx.moveTo(0,0);
+    ctx.lineTo(0,480);
+    ctx.lineTo(600,480);           
+    ctx.moveTo(0,480);
+
+    for (var i in myData) {
+        if (myData[i] >= max) {
+            var max =parseFloat(myData[i]);
+            console.log(max)
+        }
+    }
+
+    x2 = x;
+    for (var i in myData){        
+        y = myData[i];
+        var y2 = (y/max)*450;        
+        x += 50;
+        ctx.lineTo(x,480 - y2);
+        ctx.fillStyle = 'black';
+        ctx.fillText(myData[i], x ,480 - y2);
+        ctx.fillText(myLabel[i], x+x2, 495);
+        ctx.stroke();
+    }
+}
