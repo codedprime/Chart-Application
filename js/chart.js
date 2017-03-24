@@ -2,8 +2,6 @@ myLabel = [];
 myData = [];
 myColor =[];
 
-
-
 function reload() {
     while((myData.length > 0)||(myLabel.length>0)||(myColor.length>0) ){
         myData.pop();
@@ -14,8 +12,8 @@ function reload() {
     eachLabel = 0;
 
    var canvas = document.getElementById('myCanvas');
-            var ctx = canvas.getContext('2d'); ctx.clearRect(0,0,canvas.width,canvas.height);
-             ctx.beginPath();
+   var ctx = canvas.getContext('2d'); ctx.clearRect(0,0,canvas.width,canvas.height);
+   ctx.beginPath();
 }
 
 
@@ -170,7 +168,7 @@ function pieChart(){
         ctx.strokeStyle = 'black';
         ctx.stroke();
         midAngle = prevAngle + (angle - prevAngle) / 2;
-        labelRadius = 150 * .75;
+        labelRadius = 200 * .75;
         x = 200 + (labelRadius) * Math.cos(midAngle);
         y = 200 + (labelRadius) * Math.sin(midAngle);
         ctx.font = '24px serif';
