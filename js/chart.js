@@ -148,8 +148,7 @@ function lineChart(){
 
     for (var i in myData) {
         if (myData[i] >= max) {
-            var max =parseFloat(myData[i]);
-            console.log(max)
+            var max =parseFloat(myData[i]);          
         }
     }
 
@@ -237,7 +236,3 @@ function reload() {
     eachData = 0;
     eachLabel = 0;
 }
-
-
-
-
