@@ -12,29 +12,45 @@
     </head>
     <body>
       
-      <h1>CHART APPLICATION</h1>
-      <table>
-          <tr> <td><div>           
-      <input type = "submit" onclick="pieChart()" value="Pie Chart">
-      <input type = "submit" onclick="barChart()" value="Bar Chart">
-      <input type = "submit" onclick="lineChart()" value = "Line Chart">
-      <input type = "submit" onclick="histogram()" value = "Histogram"> 
-      <input type="submit" onclick="reload()" value="Restart">      
-      
-      </div></td><td>
-      <canvas id="myCanvas" width="600" height="500">
-      Your browser does not support the HTML5 canvas tag.
-      </canvas> </td>
-      <td id="myInput"> 
-          <input id="data" type="text" placeholder="Enter Value">
-          <input id="color"type="color"  value="#ff0000">
-          <input id="label" type="text" placeholder="Enter Label">
-          <input type="submit" onclick="data()" value="Add">
-          </td>
-          
-          
-          </tr></table>
-
+        <h1>CHART APPLICATION</h1>
+        <table>
+            <tr> 
+                <td>
+                    <div>           
+                        <input type = "submit" onclick="pieChart()" value="Pie Chart">
+                        <input type = "submit" onclick="barChart()" value="Bar Chart">
+                        <input type = "submit" onclick="lineChart()" value = "Line Chart">
+                        <input type = "submit" onclick="histogram()" value = "Histogram"> 
+                        <input type="submit" onclick="reload()" value="Restart">      
+        
+                    </div>
+                </td>
+                <td>
+                    <canvas id="myCanvas" width="600" height="500">
+                    Your browser does not support the HTML5 canvas tag.
+                    </canvas> 
+                </td>
+                <td id="myInput"> 
+                    <p id="show"></p>
+                    <label> Value:</label>
+                    <input id="data" type="text" placeholder="Enter Value">                    
+                    <label> Label:</label>
+                    <input id="label" type="text" placeholder="Enter Label">
+                    <input id="color"type="color"  value="#ff0000">
+                    <input type="submit" onclick="data()" value="Add">
+                    <p>Please read through before using:</p>                    
+                    <ul>
+                        <li>This is a simple chart tool to carry out graphical statistical analysis </li>
+                        <li>Fill in the fields above correctly and click on <b>Add</b></li>
+                        <li>For a better output, include a label for each data entry.</li> 
+                        <li>It is recommended to pick colors that will not conflict black.</li>
+                        <li>After the you have finish with the input, click on any of the buttons at the left hand side to view your result</li>
+                        <li> New entries can be added on the fly</li>
+                        <li>Use the reload button on the left hand side to restart the application.</li>
+                    </ul>
+                </td>     
+            </tr>
+        </table>
     </body>
 
 </html>
