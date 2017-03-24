@@ -24,8 +24,9 @@ This application is a web application that draws a pie chart, bar chart, line ch
 	To use the histogram, input your values and click on **Add** for each value, then click on histogram button
 
 ### Line chart
-	The line chart plots a graph of Y against X- axis according to the value inputs by the user.
-	To use the line chart, input your values and click on **Add** for each value, then click on line chart button.
+	- The line chart plots a graph of Y against X- axis according to the value inputs by the user.
+	- To use the line chart, input your values and click on **Add** for each value, then click on 
+	line chart button.
 
 ##Features
 	1. Users can input additional values when the charting is on going without reloading
