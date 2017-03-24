@@ -28,7 +28,7 @@ This application is a web application that draws a pie chart, bar chart, line ch
 	- To use the line chart, input your values and click on **Add** for each value, then click on 
 	   line chart button.
 
-##Features
+## Features
 	1. Users can input additional values when the charting is on going without reloading
 	2. Users can specify the colors they want for the charts
 	3. Users can input any posotive integer
@@ -36,7 +36,7 @@ This application is a web application that draws a pie chart, bar chart, line ch
 
 	
 
-##Contributing
+## Contributing
 
     1. Fork it: Fork the ultrafly project
     2. Create your feature branch (git checkout -b my-new-feature)
